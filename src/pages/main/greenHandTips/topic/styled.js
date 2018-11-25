@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const TopicListWrap = styled.div`
     width:100%;
     height:100%;
-    background:white;
     margin-top:1.2rem;
 `
 export const TopicItem = styled.div`
     width:100%;
     height:2.546667rem;
     padding:.4rem;
+    background:white;
     display:flex;
     img{
         width:1.866667rem;

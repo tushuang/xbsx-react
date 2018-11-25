@@ -1,10 +1,13 @@
 
 import React,{Component} from 'react'
 import {HotSpotList,HotSpotItem} from './styled'
+import {LoadingMore} from '@libs/styled'
+
 
 class HotSpot extends Component {
     render(){
         return(
+            <>
             <HotSpotList>
                <HotSpotItem>
                     <p className ='title'>究竟是什么，让我们渐行渐远</p>
@@ -21,6 +24,8 @@ class HotSpot extends Component {
                     </span>
                 </HotSpotItem>
             </HotSpotList>
+            <LoadingMore>查看更多</LoadingMore>
+            </>
             
         )
     }

@@ -1,14 +1,14 @@
 
 import React,{Component} from 'react'
 
-class Detail extends Component {
+class JobDetail extends Component {
     render(){
         return(
             <div>
-                Detail
+                JobDetail
             </div>
         )
     }
 }
 
-export default Detail
+export default JobDetail

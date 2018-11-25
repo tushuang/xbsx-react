@@ -4,8 +4,8 @@ import styled from 'styled-components'
 export const HotSpotList = styled.div`
     width:100%;
     padding:0 .4rem;
-    background:white;
     margin-top:1.2rem;
+    background:white;
 `
 
 export const HotSpotItem = styled.div`

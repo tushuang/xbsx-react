@@ -56,7 +56,7 @@ class HomeSwiper extends Component {
     }
     render(){
         return(
-            <SwiperWrap isVisible = {this.state.isVisible} className = {this.state.isVisible?'animated':''}>
+            <SwiperWrap isVisible = {this.state.isVisible} className = {this.state.isVisible?'animated fadeOutUp':''}>
                 <Carousel
                 autoplay={false}
                 infinite

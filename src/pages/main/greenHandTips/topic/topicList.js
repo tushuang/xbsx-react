@@ -3,6 +3,7 @@ import React,{Component} from 'react'
 import {TopicListWrap, TopicItem} from './styled'
 import http from '@utils/axios'
 import uuid from 'uuid'
+import {LoadingMore} from '@libs/styled'
 
 class TopicList extends Component {
     constructor(props){
@@ -10,6 +11,7 @@ class TopicList extends Component {
         this.state = {
             infos : {}
         }
+        this.loadMore = this.loadMore.bind(this)
     }
     async componentWillMount(){
         let res = await http({url:'/mock/topic.json'})
@@ -21,9 +23,17 @@ class TopicList extends Component {
         return(
             <TopicListWrap>
                {this.renderItem()}
+               <LoadingMore onClick = {this.loadMore}>查看更多</LoadingMore>
             </TopicListWrap>
             
         )
+    }
+    async loadMore(){
+        let res = await http('/mock/topic.json')
+
+        this.setState({
+            infos:this.state.infos.concat(res.classes)
+        })
     }
     renderItem(){
         let {infos} = this.state
