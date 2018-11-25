@@ -11,7 +11,8 @@ class HomeSwiper extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            infos : []
+            infos : [],
+            isVisible:this.props.isVisible
         }
     }
     async componentWillMount () {
@@ -45,9 +46,17 @@ class HomeSwiper extends Component {
             infos : res.msg.P_9_1
         })
     }
+    componentWillReceiveProps(props,state){
+       
+        if(props.isVisible!==this.props.isVisible){
+            this.setState({
+                isVisible:props.isVisible
+            })
+        }
+    }
     render(){
         return(
-            <SwiperWrap>
+            <SwiperWrap isVisible = {this.state.isVisible} className = {this.state.isVisible?'animated':''}>
                 <Carousel
                 autoplay={false}
                 infinite

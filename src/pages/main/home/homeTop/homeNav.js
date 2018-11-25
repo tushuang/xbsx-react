@@ -9,6 +9,7 @@ import SchoolJob from '@as/images/index_bar2.png'
 import SpeendMeeting from '@as/images/index_bar3.png'
 import GreenHandTest from '@as/images/index_bar4.png'
 
+import {Consumer} from '@utils/context'
 
 class HomeNav extends Component {
     constructor(props){
@@ -19,16 +20,25 @@ class HomeNav extends Component {
                 {id:uuid(),ImgUrl:SchoolJob,name:'找校招'},
                 {id:uuid(),ImgUrl:SpeendMeeting,name:'宣讲会'},
                 {id:uuid(),ImgUrl:GreenHandTest,name:'小白测评'}
-            ]
+            ],
+            isFixed:this.props.isFixed
         }
         this.renderItem = this.renderItem.bind(this)
+        // this.handleScroll = this.handleScroll.bind(this)
     }
-    
+    componentWillReceiveProps(props,state){
+       
+        if(props.isFixed!==this.props.isFixed){
+            this.setState({
+                isFixed:props.isFixed
+            })
+        }
+    }
     render(){
         return(
             <HomeNavWrap>
-                <SearchImg src={SearchInputImg}/>
-                <TabBar>
+                <SearchImg src={SearchInputImg}/>  
+                <TabBar className = {this.state.isFixed?'sticky':''}>
                     {this.renderItem()}
                 </TabBar>
             </HomeNavWrap>

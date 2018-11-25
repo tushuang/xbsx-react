@@ -4,7 +4,7 @@ import JobListItem from '@c/commons/jobListItem/jobListItem'
 // import connect from '@connect'
 import connect from '@connect/c'
 
-import {JobListWrap,JobList} from '@libs/styled'
+import {JobListWrap,JobList} from './styled'
 
 class HomeJobList extends Component {
     componentDidMount(){
@@ -12,7 +12,7 @@ class HomeJobList extends Component {
     }
     render(){
         return(
-            <JobListWrap style = {{marginTop:'.266667rem'}}>
+            <JobListWrap>
                 <JobList>
                     {this.renderItem()}
                 </JobList>

@@ -12,12 +12,13 @@ export const SwiperWrap = styled.div`
     .slider-list,.slider-frame{
         height:100%!important;
     }
+    display:${props=>props.isVisible===true?'none':'block'};
 `
 
 export const HomeNavWrap = styled.div`
     width:100%;
     height:2.586667rem;
-    position:sticky;
+    position:relative;
     top:0;
     margin-bottom:.4rem;
 `
@@ -38,6 +39,15 @@ export const TabBar = styled.div`
     align-items:center;
     background:white;
     margin-top:.4rem;
+    position:relative;
+    z-index:-1;
+    &.sticky{
+        position:fixed;
+        top:0;
+        left:0;
+        margin-top:0;
+        z-index:99;
+    }
 `
 
 export const TabBarItem = styled.div`
@@ -56,4 +66,8 @@ export const TabBarItem = styled.div`
         font-size:0.3333rem;
         margin-top:.266667rem;
     }
+`
+
+export const HomeWrap = styled.div`
+    height:100%;
 `
