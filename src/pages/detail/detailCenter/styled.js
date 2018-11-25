@@ -1,6 +1,5 @@
-
 import styled from 'styled-components'
 
-export const Handle = styled.div`
+export const DetailCenterWrap = styled.div`
 
 `

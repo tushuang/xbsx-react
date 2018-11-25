@@ -7,6 +7,7 @@ import connect from '@connect'
 import BScroll from 'better-scroll'
 import http from '@utils/axios'
 
+
 class Job extends Component {
     constructor(props){
         super(props)
@@ -29,7 +30,8 @@ class Job extends Component {
         this.scroll = new BScroll(this.refs.scrollJobList,{
             bounce:true,
             probeType:2,
-            pullUpLoad:true
+            pullUpLoad:true,
+            click:true
         })
         this.scroll.on('pullingUp', this.handleScroll)
     }

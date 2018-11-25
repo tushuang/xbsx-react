@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import SiteImg from '@as/images/address.png'
 
+
 export const JobListItemWrap = styled.div`
     width:100%;
     height:2.466667rem;

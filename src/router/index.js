@@ -13,14 +13,14 @@ class RouterComponent extends Component {
         return (
             <>
                 <Switch>
-                    {/* <Route path = '/' exact  component = {MainComponent}/> */}
+                    <Route path = '/' exact  component = {MainComponent}/>
                     <Route path = '/home'  component = {MainComponent}/>
                     <Route path = '/detail'  component = {Detail}/>
                     <Route path = '/mycollection' component = {Mycollection}/>
                     {/* <Route path = '/greenHandTips'  component = {GreenHandTips}/> */}
                     {/* <Route path = '/job'  component = {Job}/> */}
                     <Route path = '/notFound'  component = {NotFound}/>
-                    {/* <Redirect to = "/notFound" /> */}
+                    <Redirect to = "/notFound" />
                 </Switch>
             </> 
         )
