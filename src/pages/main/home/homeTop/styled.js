@@ -4,7 +4,8 @@ import 'styled-components'
 
 export const SwiperWrap = styled.div`
     width:100%;
-    height:4rem;
+    transition:all 100ms;
+    height:${props=>props.isVisible===true?'0':'4rem'};
     img{
         width:100%;
         height:100%;
@@ -12,7 +13,7 @@ export const SwiperWrap = styled.div`
     .slider-list,.slider-frame{
         height:100%!important;
     }
-    display:${props=>props.isVisible===true?'none':'block'};
+    /* display:${props=>props.isVisible===true?'none':'block'}; */
 `
 
 export const HomeNavWrap = styled.div`
