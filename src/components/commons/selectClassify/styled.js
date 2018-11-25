@@ -11,7 +11,8 @@ export const ClassifytWrap = styled.div`
     flex-wrap:wrap;
     overflow:hidden;
     &.jobPage{
-        position:sticky;
+        /* position:sticky; */
+        position:fixed;
         top:0;
         z-index:1;
     }

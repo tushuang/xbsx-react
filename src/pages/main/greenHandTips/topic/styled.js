@@ -4,6 +4,7 @@ export const TopicListWrap = styled.div`
     width:100%;
     height:100%;
     background:white;
+    margin-top:1.2rem;
 `
 export const TopicItem = styled.div`
     width:100%;

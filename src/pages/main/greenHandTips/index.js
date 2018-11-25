@@ -10,7 +10,6 @@ import HotSpot from './hotspot/hotspot'
 class GreenHandTips extends Component {
     render(){
         let { location } = this.props
-        console.log(location)
         return(
             <div>
                 <TopBar/> 

@@ -4,11 +4,12 @@ export const TopBarWrap = styled.ul`
     width:100%;
     height:1.2rem;
     display:flex;
-    /* position:fixed; */
+    position:fixed;
     background:white;
     justify-content:space-between;
-    position:sticky; 
+    /* position:sticky;  */
     top:0;
+    z-index:99;
     li{
         display:flex;
         justify-content:center;

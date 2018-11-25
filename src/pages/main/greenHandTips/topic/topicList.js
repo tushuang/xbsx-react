@@ -28,7 +28,6 @@ class TopicList extends Component {
     renderItem(){
         let {infos} = this.state
         if(!infos.length) return ''
-        console.log(infos,'hiehei')
         return infos.map((item)=>{
             return (
                 <TopicItem

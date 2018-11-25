@@ -5,6 +5,7 @@ export const HotSpotList = styled.div`
     width:100%;
     padding:0 .4rem;
     background:white;
+    margin-top:1.2rem;
 `
 
 export const HotSpotItem = styled.div`

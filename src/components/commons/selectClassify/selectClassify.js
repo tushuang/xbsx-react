@@ -17,7 +17,6 @@ class SelectClassify extends Component {
         let classify = await http({
             url:'/mock/classify.json'
         })
-        console.log(classify)
     }
     render(){
         return(
@@ -37,7 +36,7 @@ class SelectClassify extends Component {
                     <ClassifyItem  onClick = {this.popups} className = "changeType">......</ClassifyItem>
                 </SecondFloor>
             </ClassifytWrap>  
-            <AsideSelect/>
+            {/* <AsideSelect/> */}
             </SelectWrap>
         )
     }
@@ -45,7 +44,6 @@ class SelectClassify extends Component {
         this.setState({
             changeHeight:!this.state.changeHeight
         })
-        console.log(e.target.parentNode,this.refs.top)
       
     }
 }

@@ -10,7 +10,7 @@ class Job extends Component {
         return(
             <div>
                 <SelectClassify/>
-                <JobListWrap>
+                <JobListWrap className = 'changeMargin'>
                     <JobList>
                         {this.renderItem()}
                     </JobList>

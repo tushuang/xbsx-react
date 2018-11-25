@@ -19,7 +19,6 @@ const reducer = (
     if(action.type === types.GET_DISCUSS+"_FULFILLED"){
         newState = action.payload.data.data
     }
-    console.log(newState)  
     return newState
 }
 

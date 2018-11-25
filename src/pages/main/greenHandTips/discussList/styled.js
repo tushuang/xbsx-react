@@ -11,8 +11,8 @@ export const DiscussItemWrap = styled.div`
 
 export const DiscussListWrap = styled.div`
     width:100%;
-    /* margin-top:1.2rem; */
     background:white;
+    margin-top:1.2rem;
 `
 
 export const ItemTop = styled.div`
