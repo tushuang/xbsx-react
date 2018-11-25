@@ -4,6 +4,7 @@ import uuid from 'uuid'
 import { TabBar } from 'antd-mobile';
 
 import { TapWrap,TabBarIcon } from './styled'
+import { withRouter } from 'react-router-dom'
 
 
 import indexImg from '@as/images/index.png'
@@ -35,7 +36,16 @@ class MainComponent extends Component {
       ]
     };
   }
-
+  componentDidUpdate (props,{selectedTab}){  // 接收到的是之前的state和props
+    let { selectedTab: stab } = this.state
+    if(props.location.pathname !== '/' && selectedTab === 'xbs'){
+      this.props.history.replace('/')
+    }
+    // 如果进去的地方是 'xbs' 模块 就加上/newest
+    if(selectedTab !== stab && stab === 'xbs'){
+      this.props.history.push('/newest')
+    }
+  }
   renderItems () {
     let {infos} = this.state
     return infos.map((item)=>(
@@ -48,7 +58,7 @@ class MainComponent extends Component {
           onPress={() => {
             this.setState({
               selectedTab: item.selected,
-            });
+            });    
           }}
         >
           {item.component}
@@ -72,4 +82,4 @@ class MainComponent extends Component {
   }
 }
 
-export default MainComponent
+export default withRouter(MainComponent)
