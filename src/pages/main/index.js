@@ -24,7 +24,7 @@ class MainComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'xbs',
+      selectedTab: 'job',
       hidden: false,
       fullScreen: true,
       infos:[

@@ -1,12 +1,15 @@
 
 import React,{Component} from 'react'
+import {ClassifyWrap,CoverWrap} from './styled'
 
 class AsideSelect extends Component {
     render(){
         return(
-            <div>
-                AsideSelect
-            </div>
+            <CoverWrap>
+                <ClassifyWrap>
+                    AsideSelect
+                </ClassifyWrap>
+            </CoverWrap>
         )
     }
 }

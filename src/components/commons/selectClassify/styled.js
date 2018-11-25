@@ -39,6 +39,12 @@ export const SecondFloor = styled.div`
     background:white;
     transition:all 0.3s;
 `
+export const SelectWrap = styled.div`
+    position:relative;
+    width:100%;
+    height:auto;
+
+`
 
 export const ClassifyItem = styled.div`
     /* width:2.253333rem; */

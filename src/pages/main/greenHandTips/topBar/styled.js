@@ -5,11 +5,9 @@ export const TopBarWrap = styled.ul`
     height:1.2rem;
     display:flex;
     /* position:fixed; */
-    top:0;
-    left:0;
     background:white;
     justify-content:space-between;
-    position:sticky;
+    position:sticky; 
     top:0;
     li{
         display:flex;

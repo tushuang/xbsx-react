@@ -1,22 +1,14 @@
 
 import React,{Component} from 'react'
-import {ClassifytWrap,ClassifyItem,FirstFloor,SecondFloor} from './styled'
+import {ClassifytWrap,ClassifyItem,FirstFloor,SecondFloor,SelectWrap} from './styled'
 import http from "@utils/axios"
-import uuid from 'uuid'
+import AsideSelect from './asideSelect'
+import { relative } from 'path';
 
 class SelectClassify extends Component {
     constructor(props){
         super(props)
         this.state = {
-            type:[
-                {id:uuid(),title:'类型',class:'first-floor'},
-                {id:uuid(),title:'地点',class:'first-floor'},
-                {id:uuid(),title:'日薪',class:'first-floor'},
-                {id:uuid(),title:'学历',class:'first-floor'},
-                {id:uuid(),title:'......',class:'changeType'},
-                {id:uuid(),title:'每周实习天数',class:'second-floor'},
-                {id:uuid(),title:'实习月数',class:'second-floor'}
-            ],
             changeHeight : true
         }
         this.popups = this.popups.bind(this)
@@ -29,6 +21,7 @@ class SelectClassify extends Component {
     }
     render(){
         return(
+            <SelectWrap>
             <ClassifytWrap className = 'border-bottom jobPage'>
                 {/* {this.renderClidren()} */}
                 <FirstFloor ref = 'top' className ='border-bottom first-floor' changeHeight = {this.state.changeHeight}>
@@ -43,9 +36,9 @@ class SelectClassify extends Component {
                     <ClassifyItem className = 'border-right' changeWidth>实习月数</ClassifyItem>
                     <ClassifyItem  onClick = {this.popups} className = "changeType">......</ClassifyItem>
                 </SecondFloor>
-                
-
             </ClassifytWrap>  
+            <AsideSelect/>
+            </SelectWrap>
         )
     }
     popups(e){
@@ -54,20 +47,6 @@ class SelectClassify extends Component {
         })
         console.log(e.target.parentNode,this.refs.top)
       
-    }
-    renderClidren(){
-        return this.state.type.map(item=>{
-            return (<ClassifyItem 
-            onClick = {this.popups.bind(null,item.class)}
-            key = {item.id}
-            changeHeight = {true}
-            // ref = {item.class === 'first-floor'?'top':"bottom"}
-            ref = {'top'}
-            className = {'border-right ' + item.class}
-            >
-            {item.title} 
-            </ClassifyItem>)
-        })
     }
 }
 

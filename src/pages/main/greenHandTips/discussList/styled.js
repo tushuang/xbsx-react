@@ -41,9 +41,11 @@ export const ItemTop = styled.div`
 export const ItemBottom = styled.div`
     display:flex;
     flex-direction:column;
-    /* align-content:space-around; */
     justify-content:space-between;
     height:2.666667rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
    .title{
         margin-top:.4rem;
         color:#333;
@@ -52,6 +54,7 @@ export const ItemBottom = styled.div`
    .content{
         color:#999;
         font-size:.333333rem;
+        height:.6rem;
    }
    span{
        display:flex;
