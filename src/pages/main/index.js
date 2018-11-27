@@ -38,12 +38,12 @@ class MainComponent extends Component {
   }
   componentDidUpdate (props,{selectedTab}){  // 接收到的是之前的state和props
     let { selectedTab: stab } = this.state
-    if(props.location.pathname !== '/' && selectedTab === 'xbs'){
-      this.props.history.replace('/')
+    if(props.location.pathname !== '/home' && selectedTab === 'xbs'){
+      this.props.history.replace('/home')
     }
     // 如果进去的地方是 'xbs' 模块 就加上/newest
     if(selectedTab !== stab && stab === 'xbs'){
-      this.props.history.push('/newest')
+      this.props.history.push('/home/newest')
     }
   }
   renderItems () {

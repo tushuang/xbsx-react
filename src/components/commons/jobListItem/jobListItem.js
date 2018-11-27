@@ -7,9 +7,9 @@ import {Link} from 'react-router-dom'
 class JobListItem extends Component {
     render(){
        if(JSON.stringify(this.props) === "{}") return ''
-        let { name,city,refresh:time,minsalary,maxsalary,logo_url } = this.props.info
+        let { name,city,refresh:time,minsalary,maxsalary,logo_url,uuid } = this.props.info
         return(
-            <OwnActiveNavLink tag = 'div' to = '/detail'>
+            <OwnActiveNavLink tag = 'div'  to = {{pathname :`/detail/${uuid}`}}>
             <JobListItemWrap className = 'border-bottom'>
                 <img className = 'company-picture' src = {logo_url} alt=""/>
                 <div className = 'list-center'>

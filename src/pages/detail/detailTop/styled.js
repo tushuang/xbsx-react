@@ -46,6 +46,7 @@ export const Intro = styled.div`
         font-size: .373333rem;
         color: #717171;
         margin-top:.44rem;
+        display:inline-block;
     }
     ul{
         height:.706667rem;

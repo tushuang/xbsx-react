@@ -23,3 +23,18 @@ export const JobList = styled.div`
         margin-bottom:.4rem;
     }
 `
+
+export const ToTop = styled.div`
+    position:fixed;
+    right:.4rem;
+    bottom: 1.333333rem;
+    width:1rem;
+    height:1rem;
+    background:rgba(0,0,0,.2);
+    color:#333;
+    font-size:.426667rem;
+    text-align:center;
+    line-height:1rem;
+    /* display:${props=>props.isDisplay?'block':'none'} */
+    opacity:0;
+`

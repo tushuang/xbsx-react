@@ -1,6 +1,7 @@
 
 import React,{Component} from 'react'
 import {FooterWrap} from './styled'
+import {OwnActiveNavLink} from '@utils/styled'
 
 class HomeFooter extends Component {
     render(){

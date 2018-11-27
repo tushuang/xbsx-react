@@ -4,7 +4,7 @@ import HomeTop from './homeTop/homeTop'
 import HomeJobList from './homeJobList/homeJobList'
 import HomeFooter from './homeFooter/homeFooter'
 import {ScrollWrap,HomeBottomWrap} from './styled'
-import BScroll from 'better-scroll'
+import {scroll} from '@utils/scroll'
 
 import {Provider} from '@utils/context'
 
@@ -34,11 +34,15 @@ class HomeContainer extends Component {
         )
     }
     componentDidMount(){
-       this.scroll = new BScroll(this.refs.scrollDom,{
-        bounce:false,
-        probeType:2
-       })
-       this.scroll.on('scroll', this.handleScroll)
+        this.scroll = scroll({
+            el:this.refs.scrollDom,
+            options:{
+                bounce:false,
+                probeType:2,
+                click:true
+            },
+            scroll:this.handleScroll
+        })  
     }
     handleScroll({x,y}){
         if(y<-50){

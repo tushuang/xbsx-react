@@ -1,11 +1,13 @@
 
 import React,{Component} from 'react'
+import SignIn from '@pages/login/signIn' 
+import SignUp from '@pages/login/signUp' 
 
 class Login extends Component {
     render(){
         return(
             <div>
-                Login
+                {this.props.children}
             </div>
         )
     }

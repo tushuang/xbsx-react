@@ -19,7 +19,7 @@ class DetailTop extends Component {
                             </span>
                             <em>2天前</em>
                         </span> 
-                        <p className = 'intro'>‘大牛指导，开发激情，团队年轻，氛围活泼’</p>
+                        <a className = 'intro'>‘大牛指导，开发激情，团队年轻，氛围活泼’</a>
                         <ul>
                             <li className = 'border'>100-137每天</li>
                             <li className = 'border'>武汉-江岸区</li>

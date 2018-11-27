@@ -9,17 +9,14 @@ import HotSpot from './hotspot/hotspot'
 
 class GreenHandTips extends Component {
     shouldComponentUpdate(props,state){
-        // let {pathname} = this.props.location
-        // let _pathname = pathname === '/hotspot'||pathname === '/newest'||pathname === '/topic'
-        // console.log(props.location,this.props.location)
-        // if(props.location.pathname === '/' || this.props.location.pathname === '/') return false
-        // return true
         let { pathname } = props.location
         let { pathname: _pathname } = this.props.location
         console.log('旧：',pathname,"新：",_pathname)
+        console.log(( pathname.startsWith('/home')   && _pathname.startsWith('/home') && _pathname !== '/home') )
         // 当再main中进行去掉路径 replace('/')的时候，阻止此组件rerender
-        if ( pathname === '/' && (_pathname === '/hotspot' || _pathname === '/topic' || _pathname === '/newest')) return false;
-        console.log( pathname === '/' && (_pathname === '/hotspot' || _pathname === '/topic' || _pathname === '/newest'))
+        // if ( pathname.startsWith('/home')  && (_pathname === '/home/hotspot' || _pathname === '/home/topic' || _pathname === '/home/newest')) 
+        if ( pathname.startsWith('/home')   && _pathname.startsWith('/home') && _pathname !== '/home') 
+        return false
         return true
     }
     render(){
@@ -29,10 +26,10 @@ class GreenHandTips extends Component {
                 <TopBar/> 
                 <TransitionWrap>
                     <Switch location={location}>
-                        <Route path = "/" exact component = { DiscussList }/>
-                        <Route path = '/topic' component = {TopicList} />
-                        <Route path = '/newest' component = {DiscussList} />
-                        <Route path = '/hotspot' component = {HotSpot} />
+                        {/* <Route path = "/" exact component = { DiscussList }/> */}
+                        <Route path = '/home/topic' component = {TopicList} />
+                        <Route path = '/home/newest' component = {DiscussList} />
+                        <Route path = '/home/hotspot' component = {HotSpot} />
                     </Switch>
 
                     {/* <Route path = "/" exact component = { DiscussList }/>

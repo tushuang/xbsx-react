@@ -51,11 +51,12 @@ export const OwnActiveNavLink = styled(OwnNavLink)`
         background:#ffd000;
     }
   }
-  &.ok{
-    color:tomato
+  &.collectionActive{
+    background:#ffd000;
+    color:#333;
   }
-  color:#333;
-  margin-left:10px;
-  font-size:15px;
+  /* color:#333; */
+  /* margin-left:10px; */
+  /* font-size:15px; */
   cursor:pointer;
 `
