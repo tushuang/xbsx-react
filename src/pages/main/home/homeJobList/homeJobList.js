@@ -1,7 +1,6 @@
 
 import React,{Component} from 'react'
 import JobListItem from '@c/commons/jobListItem/jobListItem'
-// import connect from '@connect'
 import connect from '@connect/c'
 
 import {JobListWrap,JobList} from './styled'

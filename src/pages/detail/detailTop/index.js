@@ -1,9 +1,10 @@
 
-import React,{Component} from 'react'
+import React,{Component,PureComponent} from 'react'
 import {DetailTopWrap,Intro} from './styled'
 
-class DetailTop extends Component {
+class DetailTop extends PureComponent {
     render(){
+        let {position,company_name,maxsalary,minsalary,imgUrl} = this.props
         return(
             <div>
                 <DetailTopWrap>
@@ -11,17 +12,17 @@ class DetailTop extends Component {
                         <img src='https://xbimg.xiaobaishixi.com/static/wap/img/company_pic.png?v=3f98509eefd7b413e04948e724b4b898'/>
                     </div>
                     <Intro>
-                        <img className = 'headIcon' src='https://xbimg.xiaobaishixi.com/6B/B6/6B13C1FFF1B07DB3F3BA4A7BB35FDDB6.png'/>
+                        <img className = 'headIcon' src={imgUrl} />
                         <span className = 'title'>
                             <span>
                                 <img className = 'icon' src="https://xbimg.xiaobaishixi.com/static/wap/img/win_wap_icon.png?v=79bfdb2039588d52ee92ccff45be8df6" alt=""/>
-                                前端开发实习生
+                                {position}
                             </span>
                             <em>2天前</em>
                         </span> 
                         <a className = 'intro'>‘大牛指导，开发激情，团队年轻，氛围活泼’</a>
                         <ul>
-                            <li className = 'border'>100-137每天</li>
+                            <li className = 'border'>{minsalary}-{maxsalary}每天</li>
                             <li className = 'border'>武汉-江岸区</li>
                             <li className = 'border'>大专</li>
                         </ul>

@@ -3,10 +3,14 @@ import React,{Component} from 'react'
 import SelectClassify from '@c/commons/selectClassify/selectClassify'
 import JobListItem from '@c/commons/jobListItem/jobListItem'
 import {JobListWrap,JobList,ToTop} from './styled'
-import connect from '@connect'
+import connect from '@connect/c'
+import uuid from 'uuid'
 import http from '@utils/axios'
 
 import {scroll} from '@utils/scroll'
+
+
+ 
 
 class Job extends Component {
     constructor(props){
@@ -21,7 +25,7 @@ class Job extends Component {
         this.toTop = this.toTop.bind(this)
     }
     // 当props数据变化时及时更新state中的job
-    componentWillReceiveProps(props,state){
+    componentWillReceiveProps(props, state){
         if(!props.job.length) return ''  // 如果为空 则不更新
         this.setState(preState=>{
             preState.job = props.job
@@ -63,7 +67,7 @@ class Job extends Component {
         return job.map(item=>{
             return (
                 <JobListItem
-                key = { item.uuid }
+                key = { uuid() }
                 info = { item }
                 />
             )
@@ -82,10 +86,10 @@ class Job extends Component {
         }
         this.scroll.refresh()
     }
-    async handleScroll(){
+    async handleScroll(){ // 得到更多数据
         let {page} = this.state
         let res = await http({
-            url:`/xb/jobs/search?p=${page}&k=&i=&c=&s=-&x=&d=&m=`
+            url:`/api/jobs/search?p=${page}&k=&i=&c=&s=-&x=&d=&m=`
         })
         this.setState((preState)=>{
             preState.job = preState.job.concat(res.msg)
@@ -96,5 +100,5 @@ class Job extends Component {
         this.state.page++
     }
 }
- 
-export default connect(Job,["job"])
+
+export default connect(Job, ['job'])

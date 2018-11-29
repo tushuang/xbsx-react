@@ -37,7 +37,7 @@ class HomeNav extends Component {
     render(){
         return(
             <HomeNavWrap>
-                <SearchImg src={SearchInputImg}/>  
+                <SearchImg src={SearchInputImg} className = {this.state.isFixed?'sticky':''}/>  
                 <TabBar className = {this.state.isFixed?'sticky':''}>
                     {this.renderItem()}
                 </TabBar>

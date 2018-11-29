@@ -13,8 +13,10 @@ class DiscussList extends Component {
         }
         this.loadMore = this.loadMore.bind(this)
     }
-    componentWillMount(){
-        this.props.discuss_actions.getDiscuss()
+    componentWillMount(props){
+        // if(!this.props.discuss.length ){
+            this.props.discuss_actions.getDiscuss()
+        // }
     }
     componentWillReceiveProps(props,state){
         if(!props.discuss.length) return ''

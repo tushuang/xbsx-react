@@ -4,8 +4,9 @@ import 'styled-components'
 
 export const SwiperWrap = styled.div`
     width:100%;
-    transition:all 100ms;
+    transition:all 200ms;
     height:${props=>props.isVisible===true?'0':'4rem'};
+    opacity:${props=>props.isVisible===true?'0':'1'};
     img{
         width:100%;
         height:100%;
@@ -30,6 +31,9 @@ export const SearchImg = styled.img`
     position:absolute;
     left:0;
     top:-1rem;
+    &.sticky{
+        z-index:-2;
+    }
 `
 
 export const TabBar = styled.div`
@@ -47,7 +51,7 @@ export const TabBar = styled.div`
         top:0;
         left:0;
         margin-top:0;
-        z-index:99;
+        z-index:-1;
     }
 `
 

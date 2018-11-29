@@ -5,6 +5,7 @@ import HomeJobList from './homeJobList/homeJobList'
 import HomeFooter from './homeFooter/homeFooter'
 import {ScrollWrap,HomeBottomWrap} from './styled'
 import {scroll} from '@utils/scroll'
+import {Route,Switch,Redirect,withRouter} from 'react-router-dom'
 
 import {Provider} from '@utils/context'
 
@@ -32,6 +33,10 @@ class HomeContainer extends Component {
                 </div>
             </ScrollWrap>
         )
+    }
+    componentWillMount(){
+        console.log(this.props,'home')
+        
     }
     componentDidMount(){
         this.scroll = scroll({

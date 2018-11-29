@@ -5,7 +5,13 @@ import HeaderIcon from '@as/images/default_headpic.png'
 import homeImg from '@as/images/test_wait.png'
 import { OwnActiveNavLink } from '@utils/styled'
 
+import {test} from '@utils/decorator'
+
+@test
 class Profile extends Component {
+    componentDidMount(){
+        console.log(this,'decorator.js') // 这里的this是类的一个实例
+    }
     render(){
         return(
             <ProfileWrap>

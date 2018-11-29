@@ -5,12 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import promiseMiddleware from 'redux-promise-middleware'
 
 import reducer from './reducer'
+// import { initialState } from './reducer'
 
 const store = createStore(
     reducer,
-    composeWithDevTools(
+    // composeWithDevTools(
         applyMiddleware(promiseMiddleware())
-    )  
+    // )  
 )
 
 

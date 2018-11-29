@@ -11,11 +11,7 @@ class GreenHandTips extends Component {
     shouldComponentUpdate(props,state){
         let { pathname } = props.location
         let { pathname: _pathname } = this.props.location
-        console.log('旧：',pathname,"新：",_pathname)
-        console.log(( pathname.startsWith('/home')   && _pathname.startsWith('/home') && _pathname !== '/home') )
-        // 当再main中进行去掉路径 replace('/')的时候，阻止此组件rerender
-        // if ( pathname.startsWith('/home')  && (_pathname === '/home/hotspot' || _pathname === '/home/topic' || _pathname === '/home/newest')) 
-        if ( pathname.startsWith('/home')   && _pathname.startsWith('/home') && _pathname !== '/home') 
+        if ( pathname === '/home' && (_pathname === '/xbs/topic' || _pathname === '/xbs/newest' || _pathname === '/xbs/hotspot'))
         return false
         return true
     }
@@ -24,21 +20,12 @@ class GreenHandTips extends Component {
         return(
             <div>
                 <TopBar/> 
-                <TransitionWrap>
-                    <Switch location={location}>
-                        {/* <Route path = "/" exact component = { DiscussList }/> */}
-                        <Route path = '/home/topic' component = {TopicList} />
-                        <Route path = '/home/newest' component = {DiscussList} />
-                        <Route path = '/home/hotspot' component = {HotSpot} />
-                    </Switch>
-
-                    {/* <Route path = "/" exact component = { DiscussList }/>
-                    <Route path = "/" exact component = { DiscussList }/>
-                    <Route path = '/topic' exact children =  {(props) => <TopicList {...props}/>} />
-                    <Route path = '/hotspot' exact children = {(props) => <HotSpot {...props}/>} />
-                    <Route path = '/newest' exact children = {(props) => <DiscussList {...props}/>} /> */}
-                    
-                </TransitionWrap>
+                    <Route path = "/xbs" exact render = {() => {
+                        return <Redirect to = "/xbs/newest" />
+                    }} />
+                    <Route path = '/xbs/topic' exact component = {TopicList} />
+                    <Route path = '/xbs/newest' exact component = {DiscussList} />
+                    <Route path = '/xbs/hotspot'exact component = {HotSpot} />
             </div>
         )
     }

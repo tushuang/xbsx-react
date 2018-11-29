@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import { OwnActiveNavLink } from '@utils/styled'
 
 export const PositionWrap = styled.div`
     margin-top:1.306667rem;
@@ -7,7 +7,7 @@ export const PositionWrap = styled.div`
     background:white;
 `
 
-export const PositionItem = styled.li`
+export const PositionItem = styled(OwnActiveNavLink)`
     height:1.733333rem;
     padding:.4rem 0;
     display:flex;

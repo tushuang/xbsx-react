@@ -17,7 +17,7 @@ class HomeSwiper extends Component {
     }
     async componentWillMount () {
         let _option = {
-            url:'/xb/operations/recommend',
+            url:'/api/operations/recommend',
             method:'post',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'

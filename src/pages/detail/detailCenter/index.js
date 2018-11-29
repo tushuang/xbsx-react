@@ -1,7 +1,7 @@
 
-import React,{Component} from 'react'
+import React,{PureComponent} from 'react'
 import {DetailCenterWrap} from './styled'
-class DetailCenter extends Component {
+class DetailCenter extends PureComponent {
     render(){
         return(
             <div>

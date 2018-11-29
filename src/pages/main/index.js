@@ -24,27 +24,44 @@ import Profile from './profile'
 class MainComponent extends Component {
   constructor(props) {
     super(props);
+    this.selectedTab = 'job'
     this.state = {
-      selectedTab: 'job',
+      selectedTab: this.selectedTab, 
       hidden: false,
       fullScreen: true,
       infos:[
         { id:uuid(),img:indexImg,activeImg:indexActiveImg,name:'首页',component: <Home/>,selected: 'home' },
-        { id:uuid(),img:jobImg,activeImg:jobActiveImg,name:'职位',component:<Job/>,selected: 'job'  },
-        { id:uuid(),img:xbsImg,activeImg:xbsActiveImg,name:'小白说',component:<GreenHand/>,selected: 'xbs'  },
-        { id:uuid(),img:mineImg,activeImg:mineActiveImg,name:'我的',component:<Profile/>,selected: 'mine'  }
+        { id:uuid(),img:jobImg,activeImg:jobActiveImg,name:'职位',component:<Job />,selected: 'job'  },
+        { id:uuid(),img:xbsImg,activeImg:xbsActiveImg,name:'小白说',component:<GreenHand />,selected: 'xbs'  },
+        { id:uuid(),img:mineImg,activeImg:mineActiveImg,name:'我的',component:<Profile />,selected: 'mine'  }
       ]
     };
   }
   componentDidUpdate (props,{selectedTab}){  // 接收到的是之前的state和props
     let { selectedTab: stab } = this.state
-    if(props.location.pathname !== '/home' && selectedTab === 'xbs'){
-      this.props.history.replace('/home')
+     // 如果此时，状态改变说明切换组件，判断如果是从menu切换出来的话，就更改路由为/
+     // selectedTab !== stab 防止在xbs中重复执行replace
+    if(selectedTab !== stab){
+      this.props.history.replace('/'+this.state.selectedTab)
     }
     // 如果进去的地方是 'xbs' 模块 就加上/newest
     if(selectedTab !== stab && stab === 'xbs'){
-      this.props.history.push('/home/newest')
+      this.props.history.push('/xbs/newest')
     }
+  }
+  componentWillMount(){
+    let newSelectTab = '/home'
+    switch(this.props.location.pathname.match(/^\/[a-z]+/)[0]){
+      case '/': newSelectTab = 'home';break;
+      case '/job': newSelectTab = 'job';break;
+      case '/xbs': newSelectTab = 'xbs';break;
+      case '/mine': newSelectTab = 'mine';break;
+      default: newSelectTab = 'home'
+    }
+      this.selectedTab = newSelectTab
+      this.setState({
+        selectedTab: newSelectTab
+      })
   }
   renderItems () {
     let {infos} = this.state

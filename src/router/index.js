@@ -23,6 +23,9 @@ class RouterComponent extends Component {
                 <Switch>
                     <Route path = '/' exact  component = {MainComponent}/>
                     <Route path = '/home'  component = {MainComponent}/>
+                    <Route path = '/job'  component = {MainComponent}/>
+                    <Route path = '/xbs'  component = {MainComponent}/>
+                    <Route path = '/mine'  component = {MainComponent}/>
                     <Route path = '/detail/:id'  component = {Detail}/>
                     <Route path = '/mycollection' render = {()=>{
                         return (
