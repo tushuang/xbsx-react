@@ -4,6 +4,7 @@ import {SignInWrap,FormWrap} from './styled'
 import uuid from 'uuid'
 import { OwnActiveNavLink } from '@utils/styled'
 import {changeColor} from '@utils'
+import { signIn  }  from '@utils/handleLogin'
 
 import xbPoster from '@as/images/wap-logo1.png'
 import QQicon from '@as/images/qq_ico.png'
@@ -25,6 +26,8 @@ class SignIn extends Component {
         }
         this.renderIcon = this.renderIcon.bind(this)
         this.HandlePhone = this.HandlePhone.bind(this)
+        this.signIn = this.signIn.bind(this)
+        this.HandlePassword = this.HandlePassword.bind(this)
     }
     componentDidMount(){
         changeColor(this.el,'phone')
@@ -35,9 +38,9 @@ class SignIn extends Component {
                 <div className = 'top'>
                     <img src={xbPoster}/>
                 </div>
-                <FormWrap>
+                <FormWrap onSubmit = {this.signIn}>
                     <input ref = {el => this.el=el} onInput = {this.HandlePhone} className = 'inputText border' type="number" placeholder = '手机号/邮箱'/>
-                    <input className = 'inputPassword border' type="password" placeholder = '密码'/>
+                    <input ref = {password => this.password = password} onInput = {this.HandlePassword} className = 'inputPassword border' type="password" placeholder = '密码'/>
                     <button className = 'submit'> 立即登录 </button>
                     <span className = 'tips'>
                         <em>忘记密码？</em>
@@ -57,8 +60,28 @@ class SignIn extends Component {
             </SignInWrap>
         )
     }
+    signIn(e){
+        e.preventDefault()
+        let phoneNum = this.el.value
+        let password = this.password.value
+        let info = {
+            phoneNum,
+            password
+        }
+        let res = signIn(info)
+        if(res.code === 200){
+            window.location.href = '/mine?id=' + res.msg
+        }else if (res.code === 201){
+            alert(res.msg)
+        }else if (res.code === 202){
+            alert(res.msg)
+        }
+    }
     HandlePhone(e){
         changeColor(e.target,'phone') // utils里判断输入的号码是否符合标准 符合标准改变颜色 否则是白色
+    }
+    HandlePassword(e){
+        changeColor(e.target,'password') // utils里判断输入的号码是否符合标准 符合标准改变颜色 否则是白色
     }
     renderIcon(){
         return (

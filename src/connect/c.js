@@ -12,13 +12,10 @@ const _connect = function (Uicomponent, reducers = [])  {
         
         reducers.forEach(reducer => {
             if (typeof reducer === 'string') {
-                // console.log(state,'state')
-                // result[reducer] = state[reducer] ? state[reducer] : {}
-                //  需要注意 使用react-immutable后 state全都变成了immutable类型 所以要用对应的方法来取
-                result[reducer] = state.get(reducer) ? state.get(reducer) : {}
+                result[reducer] = state[reducer] ? state[reducer] : {}
             } else { // obj
-                // result[reducer.name] = filterObject(state[reducer.name], reducer.states)
-                result[reducer.name] = filterObject(state.get([reducer.name]), reducer.states)
+                result[reducer.name] = filterObject(state[reducer.name], reducer.states)
+                // result[reducer.name] = filterObject(state.get([reducer.name]), reducer.states)
             }
             
         })

@@ -51,7 +51,8 @@ class MainComponent extends Component {
   }
   componentWillMount(){
     let newSelectTab = '/home'
-    switch(this.props.location.pathname.match(/^\/[a-z]+/)[0]){
+    let selectHref = this.props.location.pathname.match(/^\/[a-z]+/)
+    switch(selectHref?selectHref[0]:'/'){
       case '/': newSelectTab = 'home';break;
       case '/job': newSelectTab = 'job';break;
       case '/xbs': newSelectTab = 'xbs';break;

@@ -1,10 +1,10 @@
-// import { combineReducers } from 'redux'
+import { combineReducers } from 'redux'
 import job from './job'
 import discuss from './discuss'
 import collection from './collection'
-import {
-    combineReducers
-  } from 'redux-immutable';
+// import {
+//     combineReducers
+//   } from 'redux-immutable';
    
 // export const initialState = Immutable.Map();
 export default combineReducers({

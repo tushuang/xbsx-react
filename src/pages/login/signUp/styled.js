@@ -37,6 +37,7 @@ export const FormWrap = styled.form`
         color:#333;
     }
     .verify{
+        display:flex;
         input{
             width:5.066667rem;
         }
@@ -49,6 +50,11 @@ export const FormWrap = styled.form`
             border-radius:0;
             justify-content:center;
             align-items:center;
+        }
+        img{
+            width:3.333333rem;
+            height:1.333333rem;
+            display:block;
         }
     }
 `
