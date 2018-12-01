@@ -56,14 +56,8 @@ class SignUp extends Component {
     }
     async signUp(e){
         e.preventDefault()
-        // let code = this.refs.verifyCode.value
-        // let phoneNum = this.el.value
-        // let res = await http({
-        //     url:'/api/telrandcode?tel='+ phoneNum +'&token=' + code
-        // })
-        // console.log(res)
         if(!(HandlePhone(this.el.value) && HandlePassword(this.password.value))) {
-            console.log('请输入正确的手机号和密码',HandlePhone(this.el.value) , HandlePassword(this.password.value))
+            alert('请输入正确的手机号和密码')
         }else{
             let phoneNum = this.el.value
             let password = this.password.value
@@ -76,7 +70,10 @@ class SignUp extends Component {
             }
             let res = signUp(obj)
             if(res.code === 200) {
-                window.location.href = '/mine?id=' + id
+                localStorage.setItem('info',JSON.stringify({id:id,statu:true}))
+                window.location.href = '/mine'
+            }else{
+                alert('账号已被注册')
             }
         }
         

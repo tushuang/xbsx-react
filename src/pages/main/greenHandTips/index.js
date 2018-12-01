@@ -8,6 +8,9 @@ import {TransitionWrap} from './styled'
 import HotSpot from './hotspot/hotspot'
 
 class GreenHandTips extends Component {
+    componentWillMount(){
+        console.log('componentWillMount')
+    }
     shouldComponentUpdate(props,state){
         let { pathname } = props.location
         let { pathname: _pathname } = this.props.location

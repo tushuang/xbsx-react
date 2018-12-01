@@ -70,7 +70,9 @@ class SignIn extends Component {
         }
         let res = signIn(info)
         if(res.code === 200){
-            window.location.href = '/mine?id=' + res.msg
+            // 登录成功时 把状态设置为true 
+            window.location.href = '/mine'
+            localStorage.setItem('info',JSON.stringify({id:res.msg,statu:true}))
         }else if (res.code === 201){
             alert(res.msg)
         }else if (res.code === 202){

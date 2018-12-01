@@ -6,7 +6,7 @@ import { TabBar } from 'antd-mobile';
 import { TapWrap,TabBarIcon } from './styled'
 import { withRouter } from 'react-router-dom'
 
-
+import URL from "url"
 import indexImg from '@as/images/index.png'
 import indexActiveImg from '@as/images/index-active.png'
 import jobImg from '@as/images/job.png'
@@ -36,6 +36,7 @@ class MainComponent extends Component {
         { id:uuid(),img:mineImg,activeImg:mineActiveImg,name:'我的',component:<Profile />,selected: 'mine'  }
       ]
     };
+    this.info = JSON.parse(localStorage.getItem('info'))
   }
   componentDidUpdate (props,{selectedTab}){  // 接收到的是之前的state和props
     let { selectedTab: stab } = this.state
@@ -48,6 +49,13 @@ class MainComponent extends Component {
     if(selectedTab !== stab && stab === 'xbs'){
       this.props.history.push('/xbs/newest')
     }
+    // 切换组件式进行判断 用户有没有登录
+    if(selectedTab !== stab && stab === 'mine'){
+      if(this.info?!this.info.statu:true){
+        console.log('hie.............')
+        window.location.href = '/login'
+      }
+    }
   }
   componentWillMount(){
     let newSelectTab = '/home'
@@ -59,10 +67,18 @@ class MainComponent extends Component {
       case '/mine': newSelectTab = 'mine';break;
       default: newSelectTab = 'home'
     }
+    // 路由更新的时候在判断一次
+    if((this.info?!this.info.statu:true) && newSelectTab === 'mine'){
+      console.log('hie',newSelectTab)
+      window.location.href = '/login'
+    }else {
       this.selectedTab = newSelectTab
       this.setState({
         selectedTab: newSelectTab
       })
+    }
+    
+    
   }
   renderItems () {
     let {infos} = this.state

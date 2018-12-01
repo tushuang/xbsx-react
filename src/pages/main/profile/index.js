@@ -1,5 +1,5 @@
 
-import React,{Component} from 'react'
+import React,{Component,PureComponent} from 'react'
 import {ProfileWrap,ProfileHeader,ProfileList} from './styled'
 import HeaderIcon from '@as/images/default_headpic.png'
 import homeImg from '@as/images/test_wait.png'
@@ -10,41 +10,19 @@ import {withRouter} from 'react-router-dom'
 import URL from 'url'
 
 @test
-class Profile extends Component {
+class Profile extends PureComponent {
     constructor(props){
         super(props)
         this.state = {
             id : ''
         }
-        let id = URL.parse(this.props.location.search).query
-        console.log(id,'id')
-        if(id){
-            this.setState({
-                id:id.split('=')[1]
-            })
-        }else{
-           window.location.href = '/login'
-        }
         this.signOut = this.signOut.bind(this)
     }
-    componentWillMount(){
-        // let id = URL.parse(this.props.location.search).query
-        // console.log(id,'id')
-        // if(id){
-        //     this.setState({
-        //         id:id.split('=')[1]
-        //     })
-        // }else{
-        //    window.location.href = '/login'
-        // }
-        
-    }
     signOut(){
-        let res = signOut(this.state.id)
-        if(res.code === 200){
-            window.location.href = '/login'
-        }
-        console.log(res)
+        let _userInfo = JSON.parse(localStorage.getItem('info')) 
+        _userInfo.statu = false
+        localStorage.setItem('info',JSON.stringify(_userInfo))
+        window.location.href = '/login'
     }
     render(){
         return(

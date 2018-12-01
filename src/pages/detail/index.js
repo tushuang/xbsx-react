@@ -53,6 +53,12 @@ class JobDetail extends Component {
         )
     }
     handleCollect(){
+        console.log('isdajfo')
+        let info = JSON.parse(localStorage.getItem('info'))
+        if(info.statu === false) {
+            window.location.href = '/login'
+            return false
+        }
         let {isCollect} = this.state
          this.setState({
             isCollect: !isCollect
