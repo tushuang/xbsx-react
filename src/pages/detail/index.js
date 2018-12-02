@@ -8,7 +8,9 @@ import connect from '@connect/c'
 
 import StarImg from '@as/images/star.png' 
 import StaredImg from '@as/images/stared.png' 
+import { getInfo } from '@utils/decorator'
 
+@getInfo
 class JobDetail extends Component {
     constructor(props){
         super(props)
@@ -20,15 +22,21 @@ class JobDetail extends Component {
         this.handleCollect = this.handleCollect.bind(this)
     }
     componentDidMount(){
-        let isCollect = JSON.parse(localStorage.getItem('collection'))
-        if(isCollect) {
-            let _target = isCollect.filter((item)=>{
-                return item.id === this.state.id
-            })
-            this.setState({
-                isCollect: _target.length === 0? true:(_target.isCollect)
-            })
+        if(!this.userInfo.statu){
+             return false 
+        }else{
+             let isCollect = this.collection
+            if(isCollect && isCollect[this.userInfo.id]) {
+                let _target = isCollect[this.userInfo.id].filter((item)=>{
+                    return item.id === this.state.id
+                })
+                this.setState({
+                    isCollect: _target.length === 0? true:false
+                })
+            }
         }
+
+       
     }
     render(){
         let {state} = this.props.location
@@ -53,8 +61,7 @@ class JobDetail extends Component {
         )
     }
     handleCollect(){
-        console.log('isdajfo')
-        let info = JSON.parse(localStorage.getItem('info'))
+        let info = this.userInfo
         if(info.statu === false) {
             window.location.href = '/login'
             return false
@@ -68,9 +75,9 @@ class JobDetail extends Component {
         setTimeout(()=>{
             state.isCollect = isCollect
             if(isCollect){
-                this.props.collection_actions.addCollection(state)
+                this.props.collection_actions.addCollection(this.userInfo,state)
             }else{
-                this.props.collection_actions.deleteCollection(state.id)
+                this.props.collection_actions.deleteCollection(this.userInfo.id,state.id)
             }
         },0)
         

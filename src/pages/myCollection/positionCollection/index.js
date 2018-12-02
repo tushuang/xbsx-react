@@ -3,7 +3,9 @@ import React,{Component} from 'react'
 import {PositionWrap,PositionItem} from './styled'
 import uuid from 'uuid'
 import { OwnActiveNavLink } from '@utils/styled'
+import { getInfo } from '@utils/decorator'
 
+@getInfo
 class PositionCollection extends Component {
     render(){
         return(
@@ -15,9 +17,9 @@ class PositionCollection extends Component {
         )
     }
     renderItem(){
-        let allCollection = JSON.parse(localStorage.getItem('collection'))
-        if(!allCollection.length) return false
-        return allCollection.map((item)=>{
+        let usrId = this.userInfo.id
+        if(!this.collection[usrId]) return false
+        return this.collection[usrId].map((item)=>{
             return (
                 <PositionItem tag = 'li' 
                 to = {{pathname:`/detail/${item.id}`,state:item}} 

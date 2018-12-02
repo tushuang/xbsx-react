@@ -1,12 +1,17 @@
 // 修饰器是一个对类进行处理的函数。修饰器函数的第一个参数，就是所要修饰的目标类。
 
-function test(target){
-    // console.log(target)  // 输出的是一个类 要注意类的方法类的实例不能使用 所以如果是要
+function getInfo(target){
+    // 输出的是一个类 要注意类的方法类的实例不能使用 所以如果是要
                          // 给类的实例使用 要挂载原型上
-    target.prototype.getDate = ()=>{
-        console.log( new Date() )
-    }
+    // target.prototype.getUserInfo = ()=>{
+        target.prototype.userInfo = JSON.parse(localStorage.getItem('info'))
+    // }
+    // target.prototype.getCollection = ()=>{
+        target.prototype.collection = JSON.parse(localStorage.getItem('collection'))
+    // }
 }
+
+
 
 
 // class A {
@@ -21,5 +26,5 @@ function test(target){
 // console.log(new A())
 
 export {
-    test
+    getInfo
 }

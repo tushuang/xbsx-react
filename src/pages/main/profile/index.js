@@ -5,11 +5,10 @@ import HeaderIcon from '@as/images/default_headpic.png'
 import homeImg from '@as/images/test_wait.png'
 import { OwnActiveNavLink } from '@utils/styled'
 import { signOut } from '@utils/handleLogin'
-import {test} from '@utils/decorator'
 import {withRouter} from 'react-router-dom'
-import URL from 'url'
+import { getInfo } from '@utils/decorator'
 
-@test
+@getInfo
 class Profile extends PureComponent {
     constructor(props){
         super(props)
@@ -19,18 +18,17 @@ class Profile extends PureComponent {
         this.signOut = this.signOut.bind(this)
     }
     signOut(){
-        let _userInfo = JSON.parse(localStorage.getItem('info')) 
-        _userInfo.statu = false
-        localStorage.setItem('info',JSON.stringify(_userInfo))
+        this.userInfo.statu = false
+        localStorage.setItem('info',JSON.stringify(this.userInfo))
         window.location.href = '/login'
     }
     render(){
         return(
             <ProfileWrap>
                 <ProfileHeader>
-                    <img src={HeaderIcon} alt="HeaderIcon"/>
+                    <img className = 'headIcon' src={HeaderIcon} alt="HeaderIcon"/>
                     <span>
-                        <img src={homeImg} alt=""/>
+                        <img src={homeImg} alt=""/><p>{this.userInfo.id}</p>
                         <p>不畏将来，不念过往</p>
                     </span>
                 </ProfileHeader>

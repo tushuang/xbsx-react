@@ -3,16 +3,16 @@ import * as types from './action-types'
 import { addCollection,deleteCollection } from '@utils/simulate'
 
 const actions = {
-    addCollection(options){
+    addCollection(user,options){
         return {
             type:types.ADD_COLLECTION,
-            payload: addCollection(options)
+            payload: addCollection(user,options)
         }
     },
-    deleteCollection(id){
+    deleteCollection(userId,id){
         return {
             type:types.DELETE_COLLECTION,
-            payload: deleteCollection(id)
+            payload: deleteCollection(userId,id)
         }
     }
 }

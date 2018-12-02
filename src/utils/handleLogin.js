@@ -5,7 +5,6 @@ export const signUp = (options)=>{
     let isHas = allUser.filter((item)=>{
         return item.phoneNum === options.phoneNum
     })
-    console.log(isHas,'isHas',isHas.lenght)
     if(!!isHas.length){
         return {
             code:203,
@@ -34,7 +33,6 @@ export const signIn = (options)=>{
                     item.statu = true
                 }
             })
-            localStorage.setItem('users',JSON.stringify(infos))
             return {
                 code:200,
                 msg:id
@@ -47,7 +45,6 @@ export const signIn = (options)=>{
         }
         
     }else{
-        setUser(options)
         return {
             code:202,
             msg:'手机号未注册 请先注册'
@@ -64,8 +61,7 @@ export const signOut = (id)=>{
         if(item.id === id){
             item.statu = false
         }
-    })
-    console.log(infos)
+    }) 
     localStorage.setItem('users',JSON.stringify(infos))
     return {
         code:200,

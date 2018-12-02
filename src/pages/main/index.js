@@ -20,7 +20,9 @@ import Home from './home'
 import Job from './job'
 import GreenHand from './greenHandTips'
 import Profile from './profile'
+import { getInfo } from '@utils/decorator'
 
+@getInfo
 class MainComponent extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +38,7 @@ class MainComponent extends Component {
         { id:uuid(),img:mineImg,activeImg:mineActiveImg,name:'我的',component:<Profile />,selected: 'mine'  }
       ]
     };
-    this.info = JSON.parse(localStorage.getItem('info'))
+    this.info = this.userInfo
   }
   componentDidUpdate (props,{selectedTab}){  // 接收到的是之前的state和props
     let { selectedTab: stab } = this.state
@@ -52,7 +54,6 @@ class MainComponent extends Component {
     // 切换组件式进行判断 用户有没有登录
     if(selectedTab !== stab && stab === 'mine'){
       if(this.info?!this.info.statu:true){
-        console.log('hie.............')
         window.location.href = '/login'
       }
     }
@@ -69,7 +70,6 @@ class MainComponent extends Component {
     }
     // 路由更新的时候在判断一次
     if((this.info?!this.info.statu:true) && newSelectTab === 'mine'){
-      console.log('hie',newSelectTab)
       window.location.href = '/login'
     }else {
       this.selectedTab = newSelectTab

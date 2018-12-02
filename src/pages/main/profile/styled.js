@@ -14,7 +14,7 @@ export const ProfileHeader = styled.header`
     justify-content:space-between;
     align-items:center;
     background:white;
-    img{
+    .headIcon{
         width:1.866667rem;
         height:1.866667rem;
         margin-right:.533333rem;
